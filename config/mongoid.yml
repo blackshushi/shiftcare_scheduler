@@ -183,3 +183,19 @@ test:
         read:
           mode: :primary
         max_pool_size: 1
+
+production: 
+  clients:
+    default:
+      database: shiftcare_scheduler_production
+      hosts:
+        - mongodb:27017
+      options:
+        read:
+          mode: primary
+        max_pool_size: 1
+        # The name of the user for authentication.
+        # user: 'mongoroot'
+
+        # The password of the user for authentication.
+        # password: 'mongosecret'
