@@ -2,3 +2,12 @@
 
 %h1
   Dashboard
+
+= @events.each do |e|
+  = e.client.name
+
+= link_to "New Admin", new_admin_path
+%br
+= link_to "New Client", new_client_path
+%br
+= link_to "New Plumber", new_plumber_path

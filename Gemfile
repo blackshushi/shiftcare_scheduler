@@ -40,15 +40,20 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sass-rails"
 
 gem 'haml'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem "font-awesome-rails"
 gem "webpacker"
+
+#mongoid 
 gem "mongoid"
 gem "mongoid-history"
+gem 'simple_enum', '~> 2.3.0' , require: 'simple_enum/mongoid'
+
+gem 'devise'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

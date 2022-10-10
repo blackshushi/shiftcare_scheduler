@@ -1,0 +1,19 @@
+%h1 Listing plumbers
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @plumbers.each do |plumber|
+      %tr
+        %td= link_to 'Show', plumber
+        %td= link_to 'Edit', edit_plumber_path(plumber)
+        %td= link_to 'Destroy', plumber, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Plumber', new_plumber_path

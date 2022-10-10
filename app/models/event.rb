@@ -1,14 +1,6 @@
 class Event < Base
-  has_one :client, dependent: :destroy
-  has_many :plumbers
+  belongs_to :client, dependent: :destroy
+  has_and_belogns_to_many :plumbers
 
-  field :active, type: Boolean
-
-  default_scope -> { where(active: true) }
-  scope :destroyed, -> { where(active: false) }
-
-  private
-  def destroy
-    self.update(active: false)
-  end
+  as_enum :status, %i{pending done}, pluralize_scopes: false, field: { default: 0 }
 end

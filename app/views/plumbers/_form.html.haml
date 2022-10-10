@@ -1,0 +1,10 @@
+= form_for @plumber do |f|
+  - if @plumber.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@plumber.errors.count, "error")} prohibited this plumber from being saved:"
+      %ul
+        - @plumber.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.submit 'Save'
