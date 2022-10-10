@@ -39,6 +39,6 @@
           .small-button
             = button_to 'Done', event_done_path(event), method: :post
 
-%br
-
-= link_to 'New Event', new_event_path
+- if current_admin
+  %br
+  = link_to 'New Event', new_event_path

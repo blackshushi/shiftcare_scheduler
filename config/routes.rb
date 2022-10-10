@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resources :plumbers
   resources :events do 
     post :done
+
+    collection do 
+      get :certain_plumber_events
+    end
   end
   resources :clients
 end

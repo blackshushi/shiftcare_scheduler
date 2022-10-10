@@ -62,6 +62,19 @@ class EventsController < ApplicationController
     end
   end
 
+  def certain_plumber_events
+    @plumber = Plumber.find params[:plumber_id]
+    @events = Event.where(plumber_ids: params[:plumber_id])
+    pp @events.count
+    if params[:start_date].present?
+      @events = @events.where(:start_date.gte => params[:start_date])
+    end
+
+    if params[:end_date].present?
+      @events = @events.where(:end_date.lte => params[:end_date])
+    end
+  end
+
   # DELETE /events/1 or /events/1.json
   def destroy
     @event.destroy
@@ -80,6 +93,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.permit(:client, :start_date, :end_date, plumber_ids: [])
+      params.permit(:client, :start_date, :end_date, :plumber_id, plumber_ids: [])
     end
 end

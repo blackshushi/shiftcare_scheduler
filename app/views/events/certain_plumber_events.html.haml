@@ -1,0 +1,29 @@
+%h1.caption 
+  = "Listing events for #{@plumber.name}"
+%table.table-latitude
+  %thead
+    %tr
+      %th
+        Client Name
+      %th
+        Plumbers 
+      %th
+        Start Date
+      %th
+        End Date
+      %th
+        status
+
+  %tbody
+    - @events.each do |event|
+      %tr
+        %td
+          = event.client.name
+        %td
+          = event.plumbers.map(&:name).join(",")
+        %td 
+          = event.start_date
+        %td 
+          = event.end_date
+        %td
+          = event.status

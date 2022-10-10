@@ -29,6 +29,6 @@
           .small-button
             = link_to 'Destroy', plumber, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
-
-= link_to 'New Plumber', new_plumber_path
+- if current_admin
+  %br
+  = link_to 'New Plumber', new_plumber_path

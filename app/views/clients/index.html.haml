@@ -29,6 +29,6 @@
           .small-button
             = link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
-
-= link_to 'New Client', new_client_path
+- if current_admin
+  %br
+  = link_to 'New Client', new_client_path

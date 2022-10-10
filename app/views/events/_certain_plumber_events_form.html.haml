@@ -1,0 +1,12 @@
+= form_with :url => url_for(:controller => 'events', :action => 'certain_plumber_events'), method: :get do |f|
+  = label_tag "Plumber"
+  = select_tag :plumber_id, options_from_collection_for_select(Plumber.all, "id", "name")
+  %br
+  = label_tag "Event Period: "
+  = label_tag "Start from"
+  = date_field_tag :start_date, ""
+  = label_tag "End at"
+  = date_field_tag :end_date, ""
+
+  .actions
+    = f.submit 'Search'
