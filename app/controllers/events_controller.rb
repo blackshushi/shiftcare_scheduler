@@ -65,7 +65,7 @@ class EventsController < ApplicationController
   def certain_plumber_events
     @plumber = Plumber.find params[:plumber_id]
     @events = Event.where(plumber_ids: params[:plumber_id])
-    pp @events.count
+
     if params[:start_date].present?
       @events = @events.where(:start_date.gte => params[:start_date])
     end
