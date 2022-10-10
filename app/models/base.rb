@@ -9,7 +9,7 @@ class Base
   field :active, type: Boolean
 
   default_scope -> { where(active: true) }
-  scope :destroyed, -> { where(active: false) }
+  scope :destroyed, -> { unscoped.where(active: false) }
 
   def destroy
     self.update!(active: false)

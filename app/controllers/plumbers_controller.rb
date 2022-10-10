@@ -21,7 +21,14 @@ class PlumbersController < ApplicationController
 
   # POST /plumbers or /plumbers.json
   def create
-    @plumber = Plumber.new(plumber_params)
+    params = plumber_params
+    vehicles = plumber_params[:vehicles]
+
+    params[:vehicles] = vehicles.split(",").map do |v|
+      v.strip
+    end
+
+    @plumber = Plumber.new(params)
 
     respond_to do |format|
       if @plumber.save
@@ -37,7 +44,14 @@ class PlumbersController < ApplicationController
   # PATCH/PUT /plumbers/1 or /plumbers/1.json
   def update
     respond_to do |format|
-      if @plumber.update(plumber_params)
+      params = plumber_params
+      vehicles = plumber_params[:vehicles]
+  
+      params[:vehicles] = vehicles.split(",").map do |v|
+        v.strip
+      end
+      
+      if @plumber.update(params)
         format.html { redirect_to plumber_url(@plumber), notice: "Plumber was successfully updated." }
         format.json { render :show, status: :ok, location: @plumber }
       else
@@ -65,6 +79,6 @@ class PlumbersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def plumber_params
-      params.fetch(:plumber, {})
+      params.permit(:name, :address, :vehicles)
     end
 end

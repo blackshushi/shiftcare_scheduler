@@ -6,5 +6,16 @@
         - @plumber.errors.full_messages.each do |message|
           %li= message
 
+  = label_tag "Name"
+  = text_field_tag :name, @plumber.name
+  %br
+  = label_tag "Address"
+  = text_area_tag :address, @plumber.address
+  %br
+  = label_tag "Vehicles"
+  = text_area_tag :vehicles, @plumber.vehicles.join(',')
+  %br
+
+
   .actions
     = f.submit 'Save'

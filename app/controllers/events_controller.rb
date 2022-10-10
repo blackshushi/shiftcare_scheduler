@@ -19,6 +19,21 @@ class EventsController < ApplicationController
   def edit
   end
 
+  def done
+    @event = Event.find(params[:event_id])
+    @event.done!
+
+    respond_to do |format|
+      if @event.save
+        format.html {redirect_to event_url(@event, notice: "Event was succesfully updated to Done statue.")}
+        format.json {render :show, status: :updated, location: @event}
+      else
+        format.html {redirect_to events_url(notice: "Failed to update Event#{@event.id} status")}
+        format.json {render json: @event.errors, status: :unprocessable_entity}
+      end
+    end
+  end
+
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
@@ -65,6 +80,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {})
+      params.permit(:client, :start_date, :end_date, plumber_ids: [])
     end
 end

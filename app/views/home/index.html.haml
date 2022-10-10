@@ -1,13 +1,42 @@
 = content_for :title, 'Home'
 
-%h1
-  Dashboard
+- if current_admin
+  .button 
+    = link_to "New Event", new_event_path
+  .button
+    = link_to "New Client", new_client_path
+  .button
+    = link_to "New Plumber", new_plumber_path
 
-= @events.each do |e|
-  = e.client.name
+%h2.caption 
+  Pending Events
 
-= link_to "New Admin", new_admin_path
-%br
-= link_to "New Client", new_client_path
-%br
-= link_to "New Plumber", new_plumber_path
+%table.table-latitude
+  %thead 
+    %th
+      Client Name
+    %th 
+      Plumbers
+    %th 
+      Start Date
+    %th 
+      End Date
+    - if current_admin
+      %th 
+        Actions
+    
+  %tbody
+    - @events.each do |e|
+      %tr
+        %td
+          = e.client.name
+        %td
+          = e.plumbers.map(&:name).join(",")
+        %td
+          = e.start_date
+        %td
+          = e.end_date
+        - if current_admin
+          %td
+            = link_to edit_event_path(e.id) do 
+              = image_tag "data:image/png;base64,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", style: "width: 30px;height: 30px"

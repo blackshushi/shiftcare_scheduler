@@ -1,5 +1,11 @@
 %p#notice= notice
 
+= "Name: #{@plumber.name}"
+%br
+= "Address: #{@plumber.address}"
+%br
+= "Vehicles: #{@plumber.vehicles.join(',')}"
+%br
 
 = link_to 'Edit', edit_plumber_path(@plumber)
 \|

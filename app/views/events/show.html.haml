@@ -1,6 +1,13 @@
 %p#notice= notice
 
-
+= "Client Name: #{@event.client.name}"
+%br
+= "Plumbers: #{@event.plumbers.map(&:name).join(",")}"
+%br
+= "Event Period: #{@event.start_date} to #{@event.end_date}"
+%br
+= "Event Status: #{@event.status}"
+%br
 = link_to 'Edit', edit_event_path(@event)
 \|
 = link_to 'Back', events_path

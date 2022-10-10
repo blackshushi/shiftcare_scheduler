@@ -1,18 +1,43 @@
-%h1 Listing events
-
-%table
+%h1.caption 
+  Listing events
+%table.table-latitude
   %thead
     %tr
       %th
+        Client Name
       %th
+        Plumbers 
       %th
+        Start Date
+      %th
+        End Date
+      %th
+        status
+      %th
+        Actions
 
   %tbody
     - @events.each do |event|
       %tr
-        %td= link_to 'Show', event
-        %td= link_to 'Edit', edit_event_path(event)
-        %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          = event.client.name
+        %td
+          = event.plumbers.map(&:name).join(",")
+        %td 
+          = event.start_date
+        %td 
+          = event.end_date
+        %td
+          = event.status
+        %td
+          .small-button
+            = link_to 'Show', event
+          .small-button
+            = link_to 'Edit', edit_event_path(event)
+          .small-button
+            = link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+          .small-button
+            = button_to 'Done', event_done_path(event), method: :post
 
 %br
 

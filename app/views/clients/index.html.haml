@@ -1,18 +1,33 @@
-%h1 Listing clients
-
-%table
+%h1.caption 
+  Listing clients
+%table.table-latitude
   %thead
     %tr
       %th
+        Name
       %th
-      %th
+        Age
+      %th{width: '50%'}
+        Address
+      %th{width: '20%'}
+        Actions
 
   %tbody
     - @clients.each do |client|
       %tr
-        %td= link_to 'Show', client
-        %td= link_to 'Edit', edit_client_path(client)
-        %td= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          = client.name
+        %td
+          = client.age
+        %td 
+          = client.address
+        %td
+          .small-button
+            = link_to 'Show', client
+          .small-button
+            = link_to 'Edit', edit_client_path(client)
+          .small-button
+            = link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

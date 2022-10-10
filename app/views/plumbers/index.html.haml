@@ -1,18 +1,33 @@
-%h1 Listing plumbers
-
-%table
+%h1.caption 
+  Listing plumbers
+%table.table-latitude
   %thead
     %tr
       %th
+        Name
       %th
+        Address 
       %th
+        Vehicles
+      %th 
+        Actions
 
   %tbody
     - @plumbers.each do |plumber|
       %tr
-        %td= link_to 'Show', plumber
-        %td= link_to 'Edit', edit_plumber_path(plumber)
-        %td= link_to 'Destroy', plumber, method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          = plumber.name
+        %td
+          = plumber.address
+        %td
+          = plumber.vehicles.join(",")
+        %td
+          .small-button
+            = link_to 'Show', plumber
+          .small-button
+            = link_to 'Edit', edit_plumber_path(plumber)
+          .small-button
+            = link_to 'Destroy', plumber, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

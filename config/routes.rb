@@ -3,10 +3,18 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+
   root "home#index"
 
   resources :plumbers
-  resources :events
+  resources :events do 
+    post :done
+  end
   resources :clients
-  resources :admins
 end

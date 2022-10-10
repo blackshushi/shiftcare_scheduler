@@ -5,6 +5,18 @@
       %ul
         - @client.errors.full_messages.each do |message|
           %li= message
+  
+  = label_tag "Name"
+  = text_field_tag :name, ''
+  %br
+  = label_tag "Age"
+  = number_field_tag :age, ''
+  %br
+  = label_tag "Address"
+  = text_area_tag :address, ''
+  %br
+  = label_tag "Private note"
+  = text_field_tag :private_note, ''
 
   .actions
     = f.submit 'Save'

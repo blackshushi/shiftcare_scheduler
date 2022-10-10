@@ -11,30 +11,27 @@
       = yield :title
 
   %body
-    = render "layouts/header"
+    = render "layouts/navbar"
     = yield
 
 :sass
-  $pri: #128CFC;
-  $sec: #fffffe;
-  $dark-pri: #0B5AA2;
-
-  .container 
-    box-sizing: border-radius;
-    font-family: 'Rubik', sans-serif;
-    border: 1px solid black;
-    position: absolute;
-    top: 0; right: 0; bottom: 0%; left: 0;
-    margin: 0;
-    height: auto;
-    display: grid;
-    padding: 5% 0 5% 0;
-    place-items: center;
-    overflow: auto;
-    background-color: $pri;
-
   .header 
     padding: 10px 0 10px 0;
+
+  .small-button 
+    color: blue;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 16;
+    display: inline-block;
+
+  .small-button:hover 
+    background: darken(white, 8%);
+    transition: all 0.3s ease;
+    
+  .small-button:active 
+    background:darken(white, 25%)
 
   .button 
     color: blue;
@@ -51,3 +48,38 @@
 
   .button:active
     background:darken(white, 25%)
+  
+  $background: #efefef;
+  $lfs-blue: #006ac6;
+  $lfs-yellow: #fab700;
+  $lfs-grey: #75787b;
+
+  .caption
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $lfs-yellow;
+    text-align: center;
+
+  .table-latitude
+    width: 100%;
+
+    thead 
+      border-top: 2px solid $lfs-yellow;
+      border-bottom: 2px solid $lfs-yellow;
+      
+      th 
+        text-transform: uppercase;
+        text-align: center;
+        padding: 10px;
+        color: $lfs-blue;
+        border: 1px solid #F1F1F1;
+    
+    tbody
+      tr
+        border-bottom: 1px solid #F1F1F1;
+        color: $lfs-grey;
+
+        td
+          padding: 10px;
+          border: 1px solid #F1F1F1;
+          text-align: center;
